@@ -22,6 +22,33 @@ docker build -t <your-image-name> .
 docker run -p 8080:8080 <your-image-name>
 ```
 
+## Updated build instructions for W8:
+```
+docker build -t yourusername/microservice-name:latest .
+```
+
+```
+docker push yourusername/microservice-name:latest
+```
+
+```
+kubectl apply -f configmap.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f nodeport.yaml
+```
+
+```
+kubectl get deployments
+kubectl get pods
+kubectl get service
+kubectl get ConfigMap 
+```
+
+```
+curl "http://localhost:31234/fib?length=4"
+curl "http://localhost:31234/config"
+```
+
 ## Swagger Documentation
 
 To look at the swagger documentation, run-
