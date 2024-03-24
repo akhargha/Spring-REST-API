@@ -1,0 +1,7 @@
+# configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: songify-config
+data:
+  DATA_MICROSERVICE: MyOtherMicroservice

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: songify-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: songify
+  template:
+    metadata:
+      labels:
+        app: songify
+    spec:
+      containers:
+        - name: songify
+          image: akhargha/songify:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: songify-config
