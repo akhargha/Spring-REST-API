@@ -11,6 +11,8 @@ The REST API supports the following operations:
 4. POST /songs: Add a new song.
 5. PUT /songs/{id}: Update the artist list of a specific song.
 6. DELETE /songs/{id}: Delete a specific song.
+7. CONFIG /config: Displays env files and logs them
+8. FIB /fib?length={length}: Fib numbers of length
 
 ## How to run the application?
 1. Build the Docker image-
