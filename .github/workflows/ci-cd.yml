@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Build Docker image
+      run: |
+        docker build -t my-spring-app .
+      
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8080:8080 --name my-spring-container my-spring-app
+        sleep 20 # Giving time for the application to start
+
+    - name: Check application health
+      run: |
+        curl -f http://localhost:8080/fib?length=5
