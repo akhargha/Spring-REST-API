@@ -14,6 +14,11 @@ The REST API supports the following operations:
 7. CONFIG /config: Displays env files and logs them
 8. FIB /fib?length={length}: Fib numbers of length
 
+### Prerequisites
+- JDK 21
+- Gradle
+- Docker
+
 ## How to run the application?
 1. Build the Docker image-
 ```
@@ -60,5 +65,9 @@ http://localhost:8080/swagger-ui/index.html#/
 
 ## Learning Journey:
 I already knew quite a bit of Spring Boot from Prof. Ken Kousen's class last semester, so building a REST API was not super tricky for me. I did have to read some documentation and watch some tutorials to refresh my memory, but it was fairly simple. I spent some time going over the docker image and tried to understand its function. I used ChatGPT for some documentation and help in understanding Docker.
+
+## License
+
+This project is open-source.
 
 
