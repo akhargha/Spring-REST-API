@@ -25,12 +25,22 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t my-spring-app .
-      
+
     - name: Run Docker container
       run: |
         docker run -d -p 8080:8080 --name my-spring-container my-spring-app
-        sleep 20 # Giving time for the application to start
+        sleep 20 # Wait for the application to start
 
-    - name: Check application health
+    - name: Check application health and validate response
       run: |
-        curl -f http://localhost:8080/fib?length=5
+        # Fetching the Fibonacci sequence for length = 5
+        RESPONSE=$(curl -s http://localhost:8080/fib?length=5)
+        echo "Fibonacci Response: $RESPONSE"
+
+        # Check if the response is the expected Fibonacci sequence [0, 1, 1, 2, 3]
+        if [[ "$RESPONSE" == "[0,1,1,2,3]" ]]; then
+          echo "Fibonacci sequence is correct."
+        else
+          echo "Fibonacci sequence is incorrect."
+          exit 1
+        fi
